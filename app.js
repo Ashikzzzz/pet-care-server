@@ -12,7 +12,8 @@ app.use(cors());
 
 // routes 
 app.use("/api/v1/grooming",adaptionRouter)
-app.use("/api/v1/signUp",signupRouter)
+app.use("/api/v1/user",signupRouter)
+app.use("/api/v1/user",signupRouter)
 
 
 

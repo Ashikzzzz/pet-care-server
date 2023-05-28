@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(10);
+
 
 const userSchema = new mongoose.Schema({
  
@@ -9,6 +12,7 @@ const userSchema = new mongoose.Schema({
         userEmail : {
             type : String,
             required: true,
+            unique : [true,"Email already exists"]
         },
         password : {
             type : String,
@@ -27,6 +31,22 @@ const userSchema = new mongoose.Schema({
             enum: ["active","inactive","blocked"]
         }
 })
+
+// check password is hashed 
+
+userSchema.pre("save",function(next){
+    const password = this.password
+    const hashedPassword = bcrypt.hashSync(password,salt)
+    this.password =hashedPassword
+    next()
+
+})
+
+userSchema.methods.comparePassword = (password, hash)=>{
+    const isPasswordValid = bcrypt.compareSync(password,hash)
+    return isPasswordValid
+}
+
 
 const User = mongoose.model("User",userSchema)
 
