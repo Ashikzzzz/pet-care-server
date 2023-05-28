@@ -25,7 +25,7 @@ const groomingSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    timestamps: true,
+    
 })
 
 const grooming = mongoose.model("grooming",groomingSchema)

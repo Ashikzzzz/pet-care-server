@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const adaptionRouter = require("./routes/v1/grooming.route")
+const signupRouter = require("./routes/v1/user.route")
+
 
 
 // middleware
@@ -10,6 +12,7 @@ app.use(cors());
 
 // routes 
 app.use("/api/v1/grooming",adaptionRouter)
+app.use("/api/v1/signUp",signupRouter)
 
 
 

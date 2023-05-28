@@ -1,4 +1,4 @@
-const groomingModel = require("../model/Grooming")
+const groomingModel = require("../models/grooming")
 
 // save a feedBack services ---------------------------
 exports.createAgroomingService = async(data)=>{
