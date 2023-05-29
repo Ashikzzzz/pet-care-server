@@ -12,3 +12,8 @@ exports.loginAuserService = async(userEmail)=>{
     const result = await User.findOne({userEmail:userEmail})
     return result;
 }
+// user persistance
+exports.findUserByEmail = async (email) => {
+    return await User.findOne({ email });
+ };
+ 

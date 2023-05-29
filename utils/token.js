@@ -5,6 +5,7 @@ const payload = {
     email : userInfo.userEmail,
     role : userInfo.role
 }
+console.log(payload)
 
 const token = jwt.sign(payload,process.env.SECRET_TOKEN,{
     expiresIn : "1d"
